@@ -17,11 +17,10 @@ import com.wowza.gocoder.sdk.api.status.WOWZStatusCallback;
 public class BroadcastManager {
     public static WOWZBroadcastConfig initBroadcast(Context localContext, String hostAddress, String applicationName, String broadcastName, String sdkLicenseKey, String username, String password,int sizePreset, String videoOrientation, WOWZCameraView cameraView, WOWZAudioDevice audioDevice){
         WowzaGoCoder.init(localContext, sdkLicenseKey);
-        WOWZBroadcastConfig broadcastConfig = new WOWZBroadcastConfig();
-        broadcastConfig.setOrientationBehavior(getOrientationBehavior(videoOrientation));
-        broadcastConfig.setVideoFramerate(12);
-
         WOWZMediaConfig mediaConfig = getSizePresetWithInt(sizePreset);
+        WOWZBroadcastConfig broadcastConfig = new WOWZBroadcastConfig(mediaConfig);
+        broadcastConfig.setOrientationBehavior(getOrientationBehavior(videoOrientation));
+
         broadcastConfig.setVideoSourceConfig(mediaConfig);
 
         broadcastConfig.setVideoBroadcaster(cameraView);
