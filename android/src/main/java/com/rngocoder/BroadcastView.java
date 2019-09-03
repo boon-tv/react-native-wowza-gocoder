@@ -1,5 +1,6 @@
 package com.rngocoder;
 
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -76,7 +77,9 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
         cameraView = new WOWZCameraView(context);
         broadcast = new WOWZBroadcast();
         localContext.addLifecycleEventListener(this);
-        cameraView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.gravity = Gravity.CENTER;
+        cameraView.setLayoutParams(layoutParams);
         cameraView.setScaleMode(WOWZMediaConfig.RESIZE_TO_ASPECT);
         cameraView.getCamera().setTorchOn(false);
         this.addView(cameraView);
