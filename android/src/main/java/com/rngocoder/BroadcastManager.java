@@ -21,8 +21,6 @@ public class BroadcastManager {
         WOWZBroadcastConfig broadcastConfig = new WOWZBroadcastConfig(mediaConfig);
         broadcastConfig.setOrientationBehavior(getOrientationBehavior(videoOrientation));
 
-        broadcastConfig.setVideoSourceConfig(mediaConfig);
-
         broadcastConfig.setVideoBroadcaster(cameraView);
         broadcastConfig.setAudioBroadcaster(audioDevice);
         broadcastConfig.setAudioBitRate(22400);
