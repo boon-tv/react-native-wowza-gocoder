@@ -66,7 +66,7 @@ NSString * const BlackAndWhiteKey = @"BlackAndWhiteKey";
     
     // Start the camera preview
     self.goCoderCameraPreview = self.goCoder.cameraPreview;
-    self.goCoderCameraPreview.previewGravity = WOWZCameraPreviewGravityResizeAspectFill;
+    self.goCoderCameraPreview.previewGravity = WOWZCameraPreviewGravityResizeAspect;
     [self.goCoderCameraPreview startPreview];
     
 }

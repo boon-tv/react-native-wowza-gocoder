@@ -9,6 +9,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.wowza.gocoder.sdk.api.broadcast.WOWZBroadcast;
+import com.wowza.gocoder.sdk.api.configuration.WOWZMediaConfig;
 import com.wowza.gocoder.sdk.api.broadcast.WOWZBroadcastConfig;
 import com.wowza.gocoder.sdk.api.devices.WOWZAudioDevice;
 import com.wowza.gocoder.sdk.api.devices.WOWZCameraView;
@@ -76,6 +77,7 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
         broadcast = new WOWZBroadcast();
         localContext.addLifecycleEventListener(this);
         cameraView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        cameraView.setScaleMode(WOWZMediaConfig.RESIZE_TO_ASPECT);
         cameraView.getCamera().setTorchOn(false);
         this.addView(cameraView);
     }
