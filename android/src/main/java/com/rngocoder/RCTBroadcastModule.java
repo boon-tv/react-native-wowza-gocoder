@@ -58,11 +58,7 @@ public class RCTBroadcastModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 seconds++;
-                Date d = new Date(seconds* 1000L);
-                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss"); // HH for 0-23
-                df.setTimeZone(TimeZone.getTimeZone("GMT"));
-                String time = df.format(d);
-                sendCurrentTime(reactContext, "broadcastTimer", time);
+                sendCurrentTime(reactContext, "broadcastTimer", seconds);
                 if(seconds < timeout){
                     handler.postDelayed(runnable, interval*1000);
                 }
@@ -81,7 +77,7 @@ public class RCTBroadcastModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void sendCurrentTime(ReactContext reactContext, String eventName, String time){
-        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, time);
+    private void sendCurrentTime(ReactContext reactContext, String eventName, int seconds){
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, seconds);
     }
 }
