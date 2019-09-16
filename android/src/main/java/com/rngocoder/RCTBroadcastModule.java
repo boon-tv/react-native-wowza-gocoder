@@ -51,20 +51,15 @@ public class RCTBroadcastModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startTimer(final int interval, final int timeout){
+    public void startTimer(final int interval){
         this.seconds = 0;
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
+                handler.postDelayed(runnable, interval*1000);
                 seconds++;
                 sendCurrentTime(reactContext, "broadcastTimer", seconds);
-                if(seconds < timeout){
-                    handler.postDelayed(runnable, interval*1000);
-                }
-                else{
-                    stopTimer();
-                }
             }
         };
         handler.post(runnable);

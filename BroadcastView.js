@@ -27,7 +27,7 @@ export default class BroadcastView extends Component {
 
   _onBroadcastStart = (event) => {
     if(Platform.OS == 'android'){
-      BroadcastManager.startTimer(1.1, 3600);
+      BroadcastManager.startTimer(1.0);
     }
     if (this.props.onBroadcastStart) {
       this.props.onBroadcastStart(event.nativeEvent);
@@ -35,6 +35,9 @@ export default class BroadcastView extends Component {
   };
 
   _onBroadcastFail = (event) => {
+    if(Platform.OS == 'android'){
+      BroadcastManager.stopTimer();
+    }
     if (this.props.onBroadcastFail) {
       this.props.onBroadcastFail(event.nativeEvent);
     }
@@ -65,6 +68,9 @@ export default class BroadcastView extends Component {
   };
 
   _onBroadcastStop = (event) => {
+    if(Platform.OS == 'android'){
+      BroadcastManager.stopTimer();
+    }
     if (this.props.onBroadcastStop) {
       this.props.onBroadcastStop(event.nativeEvent);
     }
