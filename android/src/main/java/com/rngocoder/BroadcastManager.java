@@ -23,7 +23,7 @@ public class BroadcastManager {
 
         broadcastConfig.setVideoBroadcaster(cameraView);
         broadcastConfig.setAudioBroadcaster(audioDevice);
-        broadcastConfig.setAudioBitRate(22400);
+        broadcastConfig.setAudioBitRate(320000);
 
         broadcastConfig.setHostAddress(hostAddress);
         broadcastConfig.setUsername(username);
